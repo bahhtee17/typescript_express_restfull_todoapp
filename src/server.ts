@@ -4,7 +4,7 @@ import http from 'http';
 import mongoose from 'mongoose';
 
 import { createAuthor, getAllAuthors } from './controllers/Author';
-import { createTask } from './controllers/TaskController';
+import { createTask, tasks } from './controllers/TaskController';
 require('dotenv').config();
 
 const app = express();
@@ -21,16 +21,13 @@ mongoose
         console.log(error);
     });
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World');
-});
-
 //Author
 app.post('/createAuthor', createAuthor);
 app.get('/authors', getAllAuthors);
 
 //Task
 app.post('/createTask', createTask);
+app.get('/', tasks);
 
 app.listen(PORT, () => {
     console.log(`application running on port ${PORT}`);
