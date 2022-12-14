@@ -4,18 +4,27 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className={classes.container}>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/tasks">Tasks</Link>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <ul className={classes.container}>
+            <li className={classes.logo}>
+                <h2>task-list</h2>
+            </li>
+            <li>
+                <a>
+                    <Link to="/">
+                        {' '}
+                        <h2>Home</h2>
+                    </Link>
+                </a>
+            </li>
+
+            <li>
+                <a>
+                    <Link to="/tasks">
+                        <h2>Tasks</h2>
+                    </Link>
+                </a>
+            </li>
+        </ul>
     );
 };
 

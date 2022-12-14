@@ -1,5 +1,37 @@
 .container {
-    background-color: aqua;
+    display: flex;
+    background-color: #27313b;
     width: 100%;
-    height: auto;
+
+    flex-direction: row;
+    justify-content: end;
+}
+
+li {
+    margin: 10px;
+}
+
+.logo {
+    flex: 1;
+}
+
+h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    color: #fbf4c7;
+    font-style: oblique;
+    font-weight: 100;
+}
+
+li a {
+    text-decoration: none;
+}
+
+li a h2:hover {
+    color: #f7e67e;
+}
+
+li a h2:active {
+    color: #f7f2d4;
 }
