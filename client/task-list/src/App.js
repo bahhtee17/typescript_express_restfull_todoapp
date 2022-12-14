@@ -1,44 +1,17 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-import axios from 'axios';
+import { Route, Routes } from 'react-router-dom';
+import TaskForm from './components/TaskForm';
+import Tasks from './components/Tasks';
+import Header from './components/Header';
 
 function App() {
-    const [data, setData] = useState([]);
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    useEffect(() => {
-        const fetchData = async () => {
-            const task = await fetch('http://localhost:4000');
-            const resultJson = await task.json();
-            setData(resultJson);
-        };
-
-        fetchData();
-    }, []);
-
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-    };
-
-    const onCreateTask = () => {
-        axios
-            .post('http://localhost:4000/createTask', { title, description })
-            .then((res) => console.log('success', res))
-            .catch((err) => console.error(err));
-        console.log(data);
-        setDescription('');
-        setTitle('');
-    };
-
     return (
         <div className="App">
-            <form onChange={onSubmitHandler}>
-                <input value={title} onChange={(e) => setTitle(e.target.value)} type={'text'} placeholder="Title" />
-                <input value={description} onChange={(e) => setDescription(e.target.value)} type={'text'} placeholder="Description" />
-                <button onClick={onCreateTask} type="submit">
-                    Submit
-                </button>
-            </form>
+            <Header />
+            <Routes>
+                <Route element={<TaskForm />} path="/" />
+                <Route element={<Tasks />} path="tasks" />
+            </Routes>
         </div>
     );
 }
